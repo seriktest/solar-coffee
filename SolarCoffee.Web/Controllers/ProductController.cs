@@ -5,11 +5,11 @@ namespace SolarCoffee.Web.Controllers;
 
 [ApiController]
 public class ProductController: ControllerBase {
-    private readonly Logger<ProductController> _logger;
+    private readonly ILogger<ProductController> _logger;
     private readonly IProductService _productService;
     
 
-    public ProductController(Logger<ProductController> logger, IProductService productService) {
+    public ProductController(ILogger<ProductController> logger, IProductService productService) {
         _logger = logger;
         _productService = productService;
     }
@@ -17,6 +17,7 @@ public class ProductController: ControllerBase {
     [HttpGet("/api/product")]
     public ActionResult GetProducts() {
         _logger.LogInformation("Getting All products");
-        return Ok();
+        var products = _productService.GetAllProducts();
+        return Ok(products);
     }
 }

@@ -11,13 +11,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddTransient<IProductService, ProductService>();
+
 builder.Services.AddDbContext<SolarDbContext>(options =>
 {
     options.EnableDetailedErrors();
     options.UseNpgsql(builder.Configuration.GetConnectionString("solar.dev"));
 });
 
-builder.Services.AddTransient<IProductService, IProductService>();
 
 var app = builder.Build();
 
