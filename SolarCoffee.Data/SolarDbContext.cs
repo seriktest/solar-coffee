@@ -12,4 +12,8 @@ public class SolarDbContext : IdentityDbContext
 
     public virtual DbSet<Customer> Customers { get; set; } = null!;
     public virtual DbSet<CustomerAddress> CustomerAddresses { get; set; } = null!;
+    public virtual DbSet<Product> Products { get; set; } = null!;
+    public virtual DbSet<ProductInventory> ProductInventories { get; set; } = null!;
+    public virtual DbSet<SalesOrder> SalesOrders { get; set; } = null!;
+    public virtual DbSet<SalesOrderItem> SalesOrderItems { get; set; } = null!;
 }
